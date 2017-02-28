@@ -1,28 +1,34 @@
-# First Chapter
+# socket.io api
 
 var express = require\('express'\)
 
-    , app = express\(\)
+```
+, app = express\(\)
 
-    , server = require\('http'\).createServer\(app\)
+, server = require\('http'\).createServer\(app\)
 
-    , io = require\('socket.io'\).listen\(server\);
+, io = require\('socket.io'\).listen\(server\);
+```
 
 server.listen\(3001\);
 
 app.get\('/', function \(req, res\) {
 
-    res.sendfile\(\_\_dirname + '/index.html'\);}\);
+```
+res.sendfile\(\_\_dirname + '/index.html'\);}\);
+```
 
 io.sockets.on\('connection', function \(socket\) {
 
-    socket.emit\('news', { hello: 'world' }\);
+```
+socket.emit\('news', { hello: 'world' }\);
 
-    socket.on\('other event', function \(data\) {
+socket.on\('other event', function \(data\) {
 
-        console.log\(data\);
+    console.log\(data\);
 
-    }\);
+}\);
+```
 
 }\);
 
@@ -30,23 +36,19 @@ io.sockets.on\('connection', function \(socket\) {
 
 &lt;script&gt;
 
-    var socket = io.connect\('http://localhost'\);
+```
+var socket = io.connect\('http://localhost'\);
 
-    socket.on\('news', function \(data\) {
+socket.on\('news', function \(data\) {
 
-        console.log\(data\);
+    console.log\(data\);
 
-        socket.emit\('other event', { my: 'data' }\);
+    socket.emit\('other event', { my: 'data' }\);
 
-    }\);
+}\);
+```
 
 &lt;/script&gt;
-
-
-
-
-
-
 
 1\).向所有客户端广播：socket.broadcast.emit\('broadcast message'\);
 
@@ -62,9 +64,11 @@ io.sockets.on\('connection', function \(socket\) {
 
 io.sockets.on\('connection', function \(socket\) {
 
-    //注意：和下面对比，这里是从客户端的角度来提交事件
+```
+//注意：和下面对比，这里是从客户端的角度来提交事件
 
-    socket.broadcast.to\('my room'\).emit\('event\_name', data\);
+socket.broadcast.to\('my room'\).emit\('event\_name', data\);
+```
 
 }
 
@@ -92,19 +96,11 @@ io.sockets.clients\('particular room'\)
 
 io.sockets.manager.roomClients\[socket.id\]
 
-
-
 socket.join\(e\);//将链接放入e房间
 
 io.to\(e\).emit\('msg',socket.id\)//对e房间理的链接发送消息，socket.id为唯一链接的名字
 
-
-
-
-
 客户端socket.on\(\)监听的事件：
-
-
 
 connect：连接成功
 
@@ -132,35 +128,35 @@ reconnecting：正在重连
 
 有的时候要一个程序支持多个应用，如果使用默认的 “/” 命名空间可能会比较混乱。如果想让一个连接可以支持多个连接，可以使用如下的命名空间的方法：
 
-
-
 app.js
 
 var io = require\('socket.io'\).listen\(80\);
 
-
-
 var chat = io
 
- .of\('/chat'\)
+.of\('/chat'\)
 
- .on\('connection', function \(socket\) {
+.on\('connection', function \(socket\) {
 
-   socket.emit\('a message', {
+socket.emit\('a message', {
 
-       that: 'only'
+```
+   that: 'only'
 
-     , '/chat': 'will get'
+ , '/chat': 'will get'
+```
 
-   }\);
+}\);
 
-   chat.emit\('a message', {
+chat.emit\('a message', {
 
-       everyone: 'in'
+```
+   everyone: 'in'
 
-     , '/chat': 'will get'
+ , '/chat': 'will get'
+```
 
-   }\);
+}\);
 
- }\);
+}\);
 
