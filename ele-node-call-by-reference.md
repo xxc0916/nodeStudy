@@ -12,7 +12,11 @@
 
 另外如果简历中有写 C++, 则必问`指针与引用的区别`.
 
-http://javascript.ruanyifeng.com/grammar/function.html\#toc19
+[http://javascript.ruanyifeng.com/grammar/function.html\#toc19](http://javascript.ruanyifeng.com/grammar/function.html#toc19)
+
+http://javascript.ruanyifeng.com/grammar/operator.html
+
+
 
 ### 传递方式 {#传递方式}
 
