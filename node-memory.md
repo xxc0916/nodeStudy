@@ -18,7 +18,7 @@ while
 (
 true
 )
-  
+
 arr
 .
 push
@@ -39,7 +39,7 @@ while
 (
 true
 )
-  
+
 arr
 .
 push
@@ -58,7 +58,7 @@ while
 (
 true
 )
-  
+
 arr
 .
 push
@@ -82,21 +82,21 @@ replaceThing
 =
 function
  () {
-  
+
 var
  originalThing 
 =
  theThing
-  
+
 var
 unused
 =
 function
  () {
-    
+
 if
  (originalThing)
-      
+
 console
 .
 log
@@ -122,12 +122,12 @@ join
 *
 '
 ),
-    
+
 someMethod
 :
 function
  () {
-      
+
 console
 .
 log
@@ -142,11 +142,13 @@ setInterval
 )
 ```
 
-比如上述情况中`unused`的函数中持有了`originalThing`的引用, 使得每次旧的对象不会释放从而导致内存泄漏 \(例子出自[《Node.js 垃圾回收》](https://eggggger.xyz/2016/10/22/node-gc/)\)
+比如上述情况中`unused`的函数中持有了`originalThing`的引用, 使得每次旧的对象不会释放从而导致内存泄漏 \(例子出自[《Node.js 垃圾回收》](https://eggggger.xyz/2016/10/22/node-gc/\)\)
 
 当然对于一些高水平的同学, 要求能清楚的了解 v8 内存 GC 的机制, 懂得内存快照等 \(之后会在`调试/优化`的小结中讨论\) 了. 比如 V8 中不同类型的数据存储的位置, 在内存释放的时候不同区域的不同策略等等.
 
 [https://eggggger.xyz/2016/10/22/node-gc/](https://eggggger.xyz/2016/10/22/node-gc/)
 
 [http://www.jianshu.com/p/996671d4dcc4?hmsr=toutiao.io&utm\_medium=toutiao.io&utm\_source=toutiao.io](http://www.jianshu.com/p/996671d4dcc4?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+
+[http://developer.51cto.com/art/201605/511624.htm](http://developer.51cto.com/art/201605/511624.htm)
 
